@@ -1,8 +1,8 @@
 import './App.css';
-import freeCodeCampLogo from './img/freecodecamp-logo.png';
 import Buttons from './components/Buttons';
 import Screen from './components/Screen';
 import ButtonClear from './components/ButtonClear';
+import LogoComp from './components/LogoComp';
 import { useState } from 'react';
 import { evaluate } from 'mathjs';
 
@@ -24,13 +24,7 @@ function App() {
 
   return (
     <div className='App d-flex'>
-      <div className='frecodecamp-logo-container d-flex'>
-        <img 
-        src={freeCodeCampLogo}
-        className='freecodecamp-logo'
-        alt='FreeCodeCamp Logo'
-        />
-      </div>
+      <LogoComp />
       <div className='calc-container'>
         <Screen input={input} />
         <div className='row d-flex'>
