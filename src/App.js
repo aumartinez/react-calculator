@@ -3,6 +3,7 @@ import Buttons from './components/Buttons';
 import Screen from './components/Screen';
 import ButtonClear from './components/ButtonClear';
 import LogoComp from './components/LogoComp';
+import ButtonBack from './components/ButtonBack';
 import { useState } from 'react';
 import { evaluate } from 'mathjs';
 
@@ -10,8 +11,29 @@ function App() {
 
   const [input, setInput] = useState('')
 
-  const addInput = value => {
+  const isOperator = (value) => {
+    return value = isNaN(value) && (value !== '.') && (value !== '=') ? true : false;
+  };
+
+  const addInput = (value) => {
+    let str = input.split('');
+    let last = str[(str.length - 1)];
+    if (isOperator(last) && isOperator(value)) {
+      return;
+    }
     setInput(input + value);
+  };
+
+  const backInput = () => {
+    let str = '';
+    if (typeof input == 'number') {
+      input.toString() 
+    }
+    str = input.split('')
+    str.pop();
+    let back = str.join('');
+
+    setInput(back);
   };
 
   const calcResult = () => {
@@ -55,6 +77,9 @@ function App() {
           <ButtonClear handleClick = {() => setInput('')}>
             Clear
           </ButtonClear>
+          <ButtonBack handleClick = {backInput}> 
+            Back 
+          </ButtonBack>
         </div>
       </div>
     </div>
